@@ -20,13 +20,12 @@ for (let i = 0; i < BattleZonesData.length; i += 70) {
     BattleZonesMap.push(BattleZonesData.slice(i, 70 + i));
 }
 
-let clicked = false;
-window.addEventListener('click', () => {
-    if(!clicked){
-        audio.Map.play();
-        clicked = true;
-    }
-})
+// window.addEventListener('click', () => {
+//     if(!clicked){
+//         audio.Map.play();
+//         clicked = true;
+//     }
+// })
 
 const boundaries = [];
 CollisionMap.forEach((row, i) => {
@@ -218,10 +217,12 @@ function animate() {
 }
 
 animate();
-// animateBattle();
-// startBattle();
 
+let clicked = false;
 window.addEventListener('keydown', (e) => {
+
+    if(!clicked){ audio.Map.play();  clicked = true; }
+
     switch (e.key) {
         case 'w': case 'ArrowUp':
             keys.w.pressed = true;

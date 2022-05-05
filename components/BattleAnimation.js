@@ -7,7 +7,7 @@ import { TimeOutButtonZero, TimeOutButtonOne } from "/components/utils/TimeOut.j
 const canvas = document.querySelector("canvas");
 let ctx = canvas.getContext('2d');
 
-let animateBattleID, startFight = false;
+let animateBattleID;
 let result = document.getElementById("result");
 
 const battleBackgroundImage = new Image();
@@ -167,7 +167,7 @@ window.addEventListener('keydown', (e) => {
             clearInterval(checkHealth);
             break;
         case 'p': 
-            if(paused) break;
+            if(!paused) {
             paused = true;
             audio.battle.stop();
             canvas.style.filter = "brightness(0.5)";
@@ -176,6 +176,15 @@ window.addEventListener('keydown', (e) => {
             window.cancelAnimationFrame(animateBattleID);
             clearInterval(enemyAI);
             clearInterval(checkHealth);
+            } else {
+                paused = false;
+                audio.battle.play();
+                canvas.style.filter = "brightness(1)";
+                result.innerHTML = "";
+                result.style.color = "green";
+                window.requestAnimationFrame(animateBattle);
+                objectAI();
+            }
             break;
     }
 });
