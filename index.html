@@ -17,7 +17,7 @@
     <section id="box" class="flex">
         <div id="container">
             <canvas></canvas>
-            <div class="statusBar flex">
+            <div id="playerBar" class="statusBar flex">
                 <div class="stats">
                     <div id="playerName" class="characterName">Amber</div>
                     <div class="healthBar">
@@ -29,7 +29,7 @@
                     <button class="attackBtn" id="Attack2">Tackle</button>
                 </div>
             </div>
-            <div class="statusBar enemyStatusBar">
+            <div id="enemyBar" class="statusBar enemyStatusBar">
                 <div class="stats" style="margin-top: 0.5rem;">
                     <div id="enemyName" class="characterName">Draggle</div>
                     <div class="healthBar" >
@@ -37,14 +37,16 @@
                     </div>
                 </div>
             </div>
+            <div id="result"></div>
         </div>
     </section>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js" integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="module" src="index.js" async defer></script>
     <script src="./data/Collision.js" async defer></script>
     <script src="./data/BattleZones.js" async defer></script>
-    <!-- <script src="./components/BattleAnimation.js" async defer></script> -->
+    <script src="./data/audio.js" async defer></script>
 </body>
 
 </html>

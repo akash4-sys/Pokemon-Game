@@ -56,6 +56,7 @@ export default class Sprite {
             this.position.y -= 20;
             target.position.x += 10;
             target.position.y -= 5;
+            audio.tackleHit.play();
 
             let enemyHP = parseInt(enemyHealth.width.slice(0, -2));
             enemyHP -= damage;
@@ -92,12 +93,13 @@ export default class Sprite {
             });
 
             renderSprites.push(fireball);
+            audio.initFireball.play();
 
             gsap.to(fireball.position, {
                 x: target.position.x,
                 y: target.position.y,
                 onComplete: () => {
-                    // audio.fireballHit.play()
+                    audio.fireballHit.play();
                     gsap.to(target, {
                         opacity: 0,
                         repeat: 5,
@@ -115,7 +117,9 @@ export default class Sprite {
                     let DPStime = DPS.time;
                     let DamagePerSec = setInterval(() => {
                         enemyHP = parseInt(enemyHealth.width.slice(0, -2));
-                        enemyHealth.width = (enemyHP - DPS.damage) + "px";
+                        enemyHP -= DPS.damage;
+                        if(enemyHP <= 0) { enemyHP = 0; }
+                        enemyHealth.width = enemyHP + "px";
                         target.health = enemyHP;
                         DPStime--;
                         if(!DPStime) clearInterval(DamagePerSec);

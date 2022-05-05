@@ -11,7 +11,7 @@ const Pokemon = {
         frames: { max: 4 },
         animate: true,
         animationSpeed: 40,
-        health: 50
+        health: 300
     },
     Draggle: {
         position: { x: 800, y: 100 },
@@ -19,7 +19,7 @@ const Pokemon = {
         frames: { max: 4 },
         animate: true,
         animationSpeed: 40,
-        health: 50
+        health: 300
     }
 };
 

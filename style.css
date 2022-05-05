@@ -118,3 +118,12 @@ canvas {
     width:40%;
     right:unset;
 }
+
+#result{
+    top: 45%;
+    left: 19%;
+    color: green;
+    font-size: 4rem;
+    position: absolute;
+    filter: brightness(1) !important;
+}

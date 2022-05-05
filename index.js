@@ -1,6 +1,6 @@
 import Sprite from "/components/Sprite.js";
 import Boundary from "/components/Boundary.js";
-import animateBattle from "/components/BattleAnimation.js";
+import { startBattle, animateBattle } from "/components/BattleAnimation.js";
 
 const canvas = document.querySelector("canvas");
 let ctx = canvas.getContext('2d');
@@ -19,6 +19,14 @@ const BattleZonesMap = [];
 for (let i = 0; i < BattleZonesData.length; i += 70) {
     BattleZonesMap.push(BattleZonesData.slice(i, 70 + i));
 }
+
+let clicked = false;
+window.addEventListener('click', () => {
+    if(!clicked){
+        audio.Map.play();
+        clicked = true;
+    }
+})
 
 const boundaries = [];
 CollisionMap.forEach((row, i) => {
@@ -127,7 +135,10 @@ function moving( { margin }, move ) {
 
 const moveables = [background, ...boundaries, foreground, ...BattleZones];
 let lastKey = '';
+
 const battle = { initiated:false };
+document.getElementById("playerBar").style.display = "none";
+document.getElementById("enemyBar").style.display = "none";
 
 function animate() {
     const animationId = window.requestAnimationFrame(animate);
@@ -156,22 +167,26 @@ function animate() {
               (Math.min( player.position.y + player.height, battleZone.position.y + battleZone.height ) - Math.max(player.position.y, battleZone.position.y));
 
             if( rectangularCollision({ player, boundary : {...battleZone, position : { x: battleZone.position.x , y: battleZone.position.y }} }) 
-                && overlappingArea > (player.width * player.height) / 2 && Math.random() < 0.1 ){
+                && overlappingArea > (player.width * player.height) / 2 && Math.random() < 0.01 ){
 
                 window.cancelAnimationFrame(animationId);
                 battle.initiated = true;
                 canvas.style.opacity = 0;
-                document.getElementById("flexbox").classList.add("loading");
+                audio.Map.stop();
+                audio.loading.play();
+                document.getElementById("box").classList.add("loading");
                 
                 setTimeout(() => {
+                    audio.loading.stop();
+                    audio.battle.play();
                     canvas.style.opacity = 1;
-                    document.getElementById("flexbox").classList.remove("loading");
-                    animateBattle(ctx);
+                    document.getElementById("box").classList.remove("loading");
+                    animateBattle();
+                    startBattle();
                 }, 2000);
                 
                 console.log('fight!!!');
                 break;
-
             }
         };
     }
@@ -202,9 +217,9 @@ function animate() {
     }
 }
 
-// animate();
-
-animateBattle();
+animate();
+// animateBattle();
+// startBattle();
 
 window.addEventListener('keydown', (e) => {
     switch (e.key) {
@@ -243,3 +258,5 @@ window.addEventListener('keyup', (e) => {
             break;
     }
 });
+
+export { battle, animate };
