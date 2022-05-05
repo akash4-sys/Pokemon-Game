@@ -1,0 +1,120 @@
+body {
+    background-color: black;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#box {
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Press Start 2P', cursive;
+    letter-spacing: 2px;
+}
+
+.loading {
+    background-image: url(./Image/loader.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+canvas {
+    transition: all 250ms;
+    cursor: none;
+}
+
+.statusBar {
+    position: absolute;
+    background-image: url(./Image/AttackBarBG.png);
+    height: 15%;
+    bottom: 4%;
+    left: 1%;
+    right:1%;
+    border-radius:5px;
+    border:1px solid saddlebrown;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: space-between;
+}
+
+#container{
+    position: relative;
+}
+
+.attackBtns{
+    gap:8px;
+    margin-right: 3rem;
+}
+
+.attackBtn{
+    padding: 1.25rem 4rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-image: url(./Image/attackBtn.jfif);
+    color: white;
+    font-weight: bolder;
+    border: 1px solid saddlebrown;
+    transition:all 250ms;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    font-family: 'Press Start 2P', cursive;
+    letter-spacing: 2px;
+}
+
+.attackBtn:hover{
+    cursor: pointer;
+}
+
+.attackBtn:active{
+    padding: 1rem 3.8rem;
+}
+
+.characterName{
+    font-size:1.5rem;
+    color:aliceblue;
+    font-weight:bolder;
+    margin-bottom:6px;
+}
+
+.healthBar{
+    width: 300px;
+    height: 30px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    border:1px solid darkgreen;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.stats{
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 3rem;
+}
+
+#playerHealthBar{
+    border-radius: 5px;
+    /* width:300px; */
+    height:30px;
+    background-color:limegreen;
+    transition: all 250ms;
+}
+
+#enemyHealthBar{
+    border-radius: 5px;
+    /* width:300px; */
+    height:30px;
+    background-color:limegreen;
+    transition: all 250ms;
+}
+
+.enemyStatusBar{
+    top:4%;
+    left:1%;
+    width:40%;
+    right:unset;
+}

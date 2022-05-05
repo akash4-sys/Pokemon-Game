@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <section id="box" class="flex">
+        <div id="container">
+            <canvas></canvas>
+            <div class="statusBar flex">
+                <div class="stats">
+                    <div id="playerName" class="characterName">Amber</div>
+                    <div class="healthBar">
+                        <div id="playerHealthBar"></div>
+                    </div>
+                </div>
+                <div class="flex attackBtns">
+                    <button class="attackBtn" id="Attack1">Fireball</button>
+                    <button class="attackBtn" id="Attack2">Tackle</button>
+                </div>
+            </div>
+            <div class="statusBar enemyStatusBar">
+                <div class="stats" style="margin-top: 0.5rem;">
+                    <div id="enemyName" class="characterName">Draggle</div>
+                    <div class="healthBar" >
+                        <div id="enemyHealthBar" ></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script type="module" src="index.js" async defer></script>
+    <script src="./data/Collision.js" async defer></script>
+    <script src="./data/BattleZones.js" async defer></script>
+    <!-- <script src="./components/BattleAnimation.js" async defer></script> -->
+</body>
+
+</html>
